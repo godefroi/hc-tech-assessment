@@ -17,13 +17,13 @@ The first time the PeopleSearch application starts, the database is created and 
           out-file zip-codes-limited.csv
       ```
       Once the unneeded data was removed rom the file, it was compressed into a binary blob using the following PowerShell commands:
-      ````powershell
+      ```powershell
       $fs = new-object system.io.filestream ("zip_code_data.bin", [system.io.filemode]::create)
       $ds = new-object system.io.compression.deflatestream ($fs, [system.io.compression.compressionlevel]::optimal)
       $buf = [system.io.file]::readallbytes('zip-codes-limited.csv')
       $ds.write($buf, 0, $buf.length)
       $ds.close()
-      ````
+      ```
       The file `zip_code_data.bin` was then embedded into the assembly as a resource.
 
 
@@ -45,7 +45,7 @@ A `GET` request to the controller at `http://localhost:5000/person/{id}` can be 
 
 #### Adding a new person to the database
 A `POST` request to the controller at `http://localhost:5000/person` can be used to add a new person to the database. The body of the request should contain a JSON-encoded object such as this:
-````json
+```json
 {
   "personId": 0,
   "firstName": "SHAUN",
@@ -55,12 +55,12 @@ A `POST` request to the controller at `http://localhost:5000/person` can be used
   "state": "CA",
   "postalCode": "94953"
 }
-````
+```
 Note that when creating a person, the `personId` MUST be zero. An existing person cannot be updated with this method, and a person CANNOT be created with an arbitrary `personId`. Note that this method is NOT idempotent (as implied by the `POST`), and submitting the same information multiple times will result in multiple duplicate entries.
 
 #### Updating an existing person in the database
 A `PUT` request to the controller at `http://localhost:5000/person/{id}` can be used to update an existing entry in the database. The `{id}` section of the URI path must be replaced with the ID of the person which is to be updated, and the body of the request should be a JSON-enconded object such as this:
-````json
+```json
 {
   "personId": 0,
   "firstName": "SHAUN",
@@ -70,5 +70,26 @@ A `PUT` request to the controller at `http://localhost:5000/person/{id}` can be 
   "state": "CA",
   "postalCode": "94953"
 }
-````
+```
 Note that the `personId` in the request body and the `{id}` provided on the URI must match; if they do not, an error will be returned. Also, the entry to be updated must exist; an entry cannot be created this way.
+
+
+
+
+## PeopleSearchModule
+This PowerShell module is provided as a simple way to interact with the service. The module can be loaded into the current PowerShell session using the following command:
+```powershell
+import-module -name .\PeopleSearchModule\PeopleSearch.psm1
+```
+Once the module is loaded, general help can be accessed using this command:
+```powershell
+help about_peoplesearch
+```
+A list of cmdlets provided by the module can be retrieved using this command:
+```powershell
+get-command -module peoplesearch
+```
+Help for individual cmdlets is available as well:
+```powershell
+help Get-PSApiPerson
+```
