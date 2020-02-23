@@ -1,0 +1,28 @@
+TOPIC
+    about_PeopleSearch
+
+SHORT DESCRIPTION
+    A collection of cmdlets for interacting with the simple API implemented for the
+    Health Catalyst tech assessment.
+
+LONG DESCRIPTION
+    Health Catalyst asks prospective hires to complete a tech assessment. This assessment
+    involves creating a simple web API that interacts with a simple database containing
+    fictional people. This module contains cmdlets for interacting with this API.
+
+EXAMPLES
+    A common use for this module is to retrieve a person or a list of people from the API.
+    This can be done with the Get-PSApiPerson cmdlet, for example:
+
+    > get-psapiperson -apiuri 'http://localhost:5000' -filter 's*'
+
+    personId   : 30
+    firstName  : CORA
+    lastName   : SCHMID
+    address    : 4363 SIGNAL RD
+    city       : HANOVERTON
+    state      : OH
+    postalCode : 44423
+
+KEYWORDS
+    HealthCatalyst Health Catalyst Assessment API

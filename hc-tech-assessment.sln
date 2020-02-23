@@ -7,6 +7,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleSearch", "PeopleSearc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleSearchTests", "PeopleSearchTests\PeopleSearchTests.csproj", "{3ECD2F31-73F9-4E94-B97D-C31C9CCE329B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PeopleSearchModule", "PeopleSearchModule", "{925CC0CC-98A7-434A-85B7-E7CB445DDBAA}"
+	ProjectSection(SolutionItems) = preProject
+		PeopleSearchModule\en-us\about_PeopleSearch.help.txt = PeopleSearchModule\en-us\about_PeopleSearch.help.txt
+		PeopleSearchModule\Get-PSApiPerson.ps1 = PeopleSearchModule\Get-PSApiPerson.ps1
+		PeopleSearchModule\New-PsApiPerson.ps1 = PeopleSearchModule\New-PsApiPerson.ps1
+		PeopleSearchModule\PeopleSearch.psd1 = PeopleSearchModule\PeopleSearch.psd1
+		PeopleSearchModule\PeopleSearch.psm1 = PeopleSearchModule\PeopleSearch.psm1
+		PeopleSearchModule\Set-PsApiPerson.ps1 = PeopleSearchModule\Set-PsApiPerson.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
