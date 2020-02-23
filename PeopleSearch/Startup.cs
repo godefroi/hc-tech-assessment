@@ -25,6 +25,8 @@ namespace PeopleSearch
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "This method is called by the runtime; marking static is not possible.")]
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddDbContext<Models.PeopleSearchContext>();
+
 			services.AddControllers();
 		}
 
