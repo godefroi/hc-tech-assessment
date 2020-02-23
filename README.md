@@ -2,7 +2,7 @@
 This repository holds my submission for the Health Catalyst tech assessment. It consists of a Visual Studio solution with two projects, as well as a PowerShell module.
 
 ## PeopleSearch
-The PeopleSearch project is an ASP.NET Core 3.1 web api project with a single controller. This controller provides several routes that allow a called to search for, retrieve, create, and update people in the database. The database is a SQLite database with a single table, `People`, that contains sample data for the purpose of testing the application.
+The PeopleSearch project is an ASP.NET Core 3.1 web api project with a single controller. This controller provides several routes that allow a called to search for, retrieve, create, and update people in the database. The database is a SQLite database with a single table, `People`, that contains sample data for the purpose of testing the application. Each API call to the service is delayed by 65ms using an `ActionFilter` in order to simulate the average amount of latency on AT&T's network according to the BroadbandNow 2020 survey. This delay is configurable in the `appsettings.json` file, and if the configuration value is not present, the application defaults to no delay.
 
 
 ### Sample Data
