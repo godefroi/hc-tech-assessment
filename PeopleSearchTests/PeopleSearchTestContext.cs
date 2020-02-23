@@ -5,7 +5,7 @@ using PeopleSearch.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace hc_assessment_tests
+namespace PeopleSearchTests
 {
 	/// <summary>
 	/// A database context that can have a logger factory set.

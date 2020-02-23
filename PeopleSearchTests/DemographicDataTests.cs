@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace hc_assessment_tests
+namespace PeopleSearchTests
 {
 	public class DemographicDataTests
 	{

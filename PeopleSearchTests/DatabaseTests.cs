@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace hc_assessment_tests
+namespace PeopleSearchTests
 {
 	public class DatabaseTests
 	{
