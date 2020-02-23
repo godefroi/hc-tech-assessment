@@ -57,7 +57,7 @@ namespace PeopleSearch
 			//     $ds.close()
 			// The dataset was then embedded into the assembly as a resource.
 
-			using( var rs = Assembly.GetExecutingAssembly().GetManifestResourceStream("hc_tech_assessment.zip_code_data.bin") )
+			using( var rs = Assembly.GetExecutingAssembly().GetManifestResourceStream("PeopleSearch.zip_code_data.bin") )
 			using( var ds = new System.IO.Compression.DeflateStream(rs, System.IO.Compression.CompressionMode.Decompress) )
 			using( var sr = new StreamReader(ds) ) {
 				// skip past the first line, it's a header
