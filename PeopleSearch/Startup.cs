@@ -22,7 +22,7 @@ namespace PeopleSearch
 		{
 			services.AddDbContext<Models.PeopleSearchContext>();
 
-			services.AddControllers();
+			services.AddControllers(o => o.Filters.Add<LatencyFilter>());
 		}
 
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "This method is called by the runtime; marking static is not possible.")]
