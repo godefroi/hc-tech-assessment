@@ -6,7 +6,7 @@ The PeopleSearch project is an ASP.NET Core 3.1 web api project with a single co
 
 
 ### Sample Data
-The first time the PeopleSearch application starts, the database is created and seeded with data. The sample data comes from various sources, and is designed to be somewhat realistic. Some of this data is retrieved from the internet at startup time (in order to demonstrate the techniques), and some is stored as a compressed resource in the application assembly (for the same reason).
+The first time the PeopleSearch application starts, the database is created and seeded with data. The sample data comes from various sources, and is designed to be somewhat realistic. Some of this data is retrieved from the internet at startup time (in order to demonstrate the techniques), and some is stored as a compressed resource in the application assembly (for the same reason). __Note that occiasionally, there have been issues retrieving some of the online data (i.e., 503 results from HTTP calls). This has never persisted, and a second try moments later generally succeeds.__
   * First and Last names (both male and female) come from the 1990 census surname frequency list. An effort is made to reproduce the frequency of names found in the census data, and males and females are represented in equal numbers.
   * Street addresses are automatically generated using a list of streets existing in San Francisco. As there are an extremely large number of streets in the US, this list was deemed to be sufficiently large without being overwhelming.
   * Cities, states, and zip codes are generated in a geographically-accurate way using a freely-available database retrieved from zip-codes.com. This database was retrieved as a CSV file, and then modified to reduce its size using the following PowerShell commands:
@@ -93,3 +93,9 @@ Help for individual cmdlets is available as well:
 ```powershell
 help Get-PSApiPerson
 ```
+
+
+
+
+## PeopleSearchTests
+A test suite is provided that tests various components of the application. This suite is implemented using xUnit, and all provided tests currently pass.
