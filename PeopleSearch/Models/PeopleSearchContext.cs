@@ -19,7 +19,7 @@ namespace PeopleSearch.Models
 			base.OnConfiguring(optionsBuilder);
 		}
 
-		public static void Initialize(bool recreate = false)
+		public static void Initialize(bool recreate = false, bool skipSeeding = false)
 		{
 			using( var ctx = new PeopleSearchContext() ) {
 				// remove the database if we've been asked to recreate it
@@ -28,7 +28,7 @@ namespace PeopleSearch.Models
 
 				// ensure the database is created; we'll never migrate, so this is fine
 				//   for demonstration purposes
-				if( ctx.Database.EnsureCreated() ) {
+				if( ctx.Database.EnsureCreated() && !skipSeeding ) {
 					// add some interesting seed data; we'll use some census name data to make
 					//   our test data resemble reality
 					ctx.People.AddRange(SampleDataGenerator.GeneratePeople().Take(100));
