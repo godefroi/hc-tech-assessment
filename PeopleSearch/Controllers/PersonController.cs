@@ -35,6 +35,17 @@ namespace PeopleSearch.Controllers
 			return m_dbcontext.People.Where(p => EF.Functions.Like(p.FirstName, find) || EF.Functions.Like(p.LastName, find)).Skip(skip).Take(take);
 		}
 
+		[HttpGet("{id}")]
+		public ActionResult Index(int id)
+		{
+			var ret = m_dbcontext.People.SingleOrDefault(p => p.PersonId == id);
+
+			if( ret == null )
+				return NotFound();
+
+			return new OkObjectResult(ret);
+		}
+
 		[HttpPut("{id}")]
 		public ActionResult Index(int id, Person person)
 		{
@@ -48,7 +59,7 @@ namespace PeopleSearch.Controllers
 			try {
 				// optimistically update the patient
 				m_dbcontext.SaveChanges();
-			} catch( DbUpdateException ex ) {
+			} catch( DbUpdateException ) {
 				// if the problem was that there's no patient with that id, return a 404
 				if( !m_dbcontext.People.Any(p => p.PersonId == id) )
 					return NotFound();
