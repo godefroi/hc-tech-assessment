@@ -5,6 +5,10 @@ This repository holds my submission for the Health Catalyst tech assessment. It 
 The PeopleSearch project is an ASP.NET Core 3.1 web api project with a single controller. This controller provides several routes that allow a called to search for, retrieve, create, and update people in the database. The database is a SQLite database with a single table, `People`, that contains sample data for the purpose of testing the application. Each API call to the service is delayed by 65ms using an `ActionFilter` in order to simulate the average amount of latency on AT&T's network according to the BroadbandNow 2020 survey. This delay is configurable in the `appsettings.json` file, and if the configuration value is not present, the application defaults to no delay.
 
 
+### Metrics
+The PeopleSearch application exposes metrics (runtime and http) at the `/metrics` endpoint in the Prometheus format. Prometheus could be configured to scrape these metrics and allow monitoring and alerting of the application.
+
+
 ### Sample Data
 The first time the PeopleSearch application starts, the database is created and seeded with data. The sample data comes from various sources, and is designed to be somewhat realistic. Some of this data is retrieved from the internet at startup time (in order to demonstrate the techniques), and some is stored as a compressed resource in the application assembly (for the same reason). __Note that occiasionally, there have been issues retrieving some of the online data (i.e., 503 results from HTTP calls). This has never persisted, and a second try moments later generally succeeds.__
   * First and Last names (both male and female) come from the 1990 census surname frequency list. An effort is made to reproduce the frequency of names found in the census data, and males and females are represented in equal numbers.

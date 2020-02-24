@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 
 using PeopleSearch.GraphQL;
 
+using Prometheus;
+
 namespace PeopleSearch
 {
 	public class Startup
@@ -49,9 +51,12 @@ namespace PeopleSearch
 
 			app.UseRouting();
 
+			app.UseHttpMetrics();
+
 			app.UseEndpoints(endpoints => {
 				endpoints.MapControllers();
 				endpoints.MapGrpcService<gRPC.PeopleSearchService>();
+				endpoints.MapMetrics();
 			});
 
 			app.UseGraphQL<PeopleSearchSchema>();
