@@ -96,7 +96,7 @@ A gRPC service is available that provides the same search functionality as the w
 
 
 ## PeopleSearchModule
-This PowerShell module is provided as a simple way to interact with the service. The module can be loaded into the current PowerShell session using the following command:
+This PowerShell module is provided as a simple way to interact with the service. The module can be loaded into the current PowerShell session (either PowerShell Core or Windows PowerShell) using the following command:
 ```powershell
 import-module -name .\PeopleSearchModule\PeopleSearch.psm1
 ```
