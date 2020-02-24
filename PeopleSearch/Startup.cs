@@ -3,6 +3,7 @@ using System;
 using GraphQL;
 using GraphQL.Server;
 using GraphQL.Server.Ui.Playground;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -32,7 +33,9 @@ namespace PeopleSearch
 
 			services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
 			services.AddScoped<PeopleSearchSchema>();
-			services.AddGraphQL(o => { o.ExposeExceptions = true; }).AddGraphTypes(ServiceLifetime.Scoped);
+			services.AddGraphQL(o => o.ExposeExceptions = true).AddGraphTypes(ServiceLifetime.Scoped);
+
+			services.AddGrpc(o => o.EnableDetailedErrors = true);
 
 			services.Configure<KestrelServerOptions>(options => options.AllowSynchronousIO = true);
 		}
@@ -48,6 +51,7 @@ namespace PeopleSearch
 
 			app.UseEndpoints(endpoints => {
 				endpoints.MapControllers();
+				endpoints.MapGrpcService<gRPC.PeopleSearchService>();
 			});
 
 			app.UseGraphQL<PeopleSearchSchema>();

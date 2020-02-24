@@ -85,6 +85,9 @@ A simple GraphQL endpoint is available at `http://localhost:5000/graphql` that a
 }
 ```
 
+#### gRPC endpoint
+A gRPC service is available that provides the same search functionality as the web API. The messages are described in the .proto file contained in the project.
+
 
 
 
