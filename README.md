@@ -73,6 +73,18 @@ A `PUT` request to the controller at `http://localhost:5000/person/{id}` can be 
 ```
 Note that the `personId` in the request body and the `{id}` provided on the URI must match; if they do not, an error will be returned. Also, the entry to be updated must exist; an entry cannot be created this way.
 
+#### GraphQL endpoint
+A simple GraphQL endpoint is available at `http://localhost:5000/graphql` that allows retrieval of information from the database. There is also a "playground ui" at `http://localhost:5000/ui/playground` that can be used to query the endpoint. A simple query such as the following could be used:
+```graphql
+{
+  people {
+    personId,
+    firstName,
+    lastName
+  }
+}
+```
+
 
 
 
