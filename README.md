@@ -16,7 +16,7 @@ The first time the PeopleSearch application starts, the database is created and 
           convertto-csv -notypeinformation |
           out-file zip-codes-limited.csv
       ```
-      Once the unneeded data was removed rom the file, it was compressed into a binary blob using the following PowerShell commands:
+      Once the unneeded data was removed from the file, it was compressed into a binary blob using the following PowerShell commands:
       ```powershell
       $fs = new-object system.io.filestream ("zip_code_data.bin", [system.io.filemode]::create)
       $ds = new-object system.io.compression.deflatestream ($fs, [system.io.compression.compressionlevel]::optimal)
